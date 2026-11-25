@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1B1F4B;
+  --color-accent: #FF7A00;
+  --color-highlight: #FFC400;
+  --color-bg: #F7F7F9;
+}
+
+html {
+  scroll-behavior: auto; /* يتم التحكم بالتمرير عبر Lenis */
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+/* موتيف الدائرة المتكرر */
+.circle-glow-btn {
+  position: relative;
+  border-radius: 9999px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.circle-glow-btn:hover {
+  box-shadow: 0 0 28px rgba(255, 122, 0, 0.55);
+  transform: translateY(-2px);
+}
+
+/* تأثير الوهج الحراري للمشهد الصناعي */
+@keyframes heatHaze {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  50% { transform: translateY(-3px) scaleX(1.01); }
+}
+
+.heat-haze {
+  animation: heatHaze 4s ease-in-out infinite;
+}
+
+/* تعطيل الحركات لمن يفضل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

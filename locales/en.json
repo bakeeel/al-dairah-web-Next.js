@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "fleet": "Our Fleet",
+    "safety": "Safety & Quality",
+    "coverage": "Coverage",
+    "contact": "Contact",
+    "requestQuote": "Request Service"
+  },
+  "hero": {
+    "badge": "Official Saudi Aramco Registered Carrier • TGA Licensed",
+    "title": "Delivering Energy.. Safely & On Time",
+    "subtitle": "Diesel and gasoline transport from Saudi Aramco bulk plants to fuel stations, factories, and industrial sites across the Kingdom",
+    "ctaPrimary": "Request a Quote",
+    "ctaSecondary": "Explore Services",
+    "scroll": "Scroll to explore the journey"
+  },
+  "stats": {
+    "trucks": "Modern Tanker Trucks",
+    "liters": "Liters Delivered Annually",
+    "trips": "Completed Supply Trips",
+    "years": "Years of Field Experience",
+    "onTime": "On-Time Delivery Rate"
+  },
+  "about": {
+    "tag": "About AL_DAIRAH",
+    "title": "Your Strategic Partner in the Energy Supply Chain",
+    "desc": "AL_DAIRAH is a leading national company specialized in transporting and supplying petroleum products (Diesel & Gasoline). We bridge Saudi Aramco bulk plants with fuel stations, factories, and mega-projects via an advanced, GPS-monitored fleet.",
+    "visionTitle": "Our Vision",
+    "visionText": "To be the premier and most trusted petroleum transport and energy logistics partner across Saudi Arabia.",
+    "missionTitle": "Our Mission",
+    "missionText": "Delivering safe, punctual, and sustainable fuel transport solutions through certified drivers and modern fleet technology.",
+    "goalTitle": "Our Goal",
+    "goalText": "Achieving maximum schedule reliability with zero operational incidents across all industrial zones."
+  },
+  "services": {
+    "tag": "Integrated Services",
+    "title": "Fuel Logistics Tailored for Business Continuity",
+    "items": [
+      {
+        "title": "Diesel Transport",
+        "desc": "Bulk diesel supply for factories, power generators, and contracting sites with certified quality."
+      },
+      {
+        "title": "Gasoline Transport (91 / 95 / 98)",
+        "desc": "Segregated transport using multi-compartment tankers ensuring zero cross-contamination."
+      },
+      {
+        "title": "Fuel Station Replenishment",
+        "desc": "24/7 smart scheduling to keep retail fuel stations continuously stocked."
+      },
+      {
+        "title": "Factories & Remote Sites",
+        "desc": "Reliable delivery to construction hubs, mining operations, and off-grid industrial projects."
+      },
+      {
+        "title": "Corporate Supply Contracts",
+        "desc": "Flexible monthly and annual agreements with e-invoicing and consumption analytics."
+      },
+      {
+        "title": "24/7 Emergency Dispatch",
+        "desc": "Rapid response teams positioned along major highways for urgent fuel shortages."
+      }
+    ]
+  },
+  "workflow": {
+    "tag": "How We Work & Supply Chain",
+    "title": "From Aramco Bulk Plants to Your Tank in 4 Steps",
+    "steps": [
+      { "num": "01", "title": "Submit Request", "desc": "Select fuel type, volume, and drop-off location online or via WhatsApp." },
+      { "num": "02", "title": "Confirm Quote", "desc": "Receive official quotation and immediate Aramco loading slot scheduling." },
+      { "num": "03", "title": "Deliver to Site", "desc": "GPS-tracked transit and HSE-compliant safe unloading at your facility." },
+      { "num": "04", "title": "Invoice & Follow-up", "desc": "Digital manifest, ZATCA e-invoice, and dedicated account support." }
+    ]
+  },
+  "calculator": {
+    "tag": "Preliminary Order Estimator",
+    "title": "Configure Your Fuel Supply Request in Seconds",
+    "fuelType": "Fuel Type",
+    "diesel": "Diesel",
+    "gas91": "Gasoline 91",
+    "gas95": "Gasoline 95",
+    "gas98": "Gasoline 98",
+    "quantity": "Required Volume (Liters)",
+    "city": "Delivery City",
+    "submit": "Submit Preliminary Request",
+    "summaryTitle": "Preliminary Order Card",
+    "estimatedTrucks": "Recommended Tankers",
+    "note": "* Final pricing follows official Saudi Aramco rates and transport distance."
+  },
+  "contact": {
+    "tag": "Contact Us",
+    "title": "Our Dispatch Team is Ready 24/7",
+    "name": "Full Name",
+    "company": "Company / Facility Name",
+    "phone": "Mobile Number (05xxxxxxxx)",
+    "service": "Required Service",
+    "message": "Additional Details or Site Coordinates",
+    "send": "Send Request",
+    "whatsappDirect": "Send via WhatsApp",
+    "callDirect": "Direct Call"
+  }
+}
