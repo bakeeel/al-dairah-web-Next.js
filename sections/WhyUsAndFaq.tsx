@@ -1,12 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18nContext";
 import { ChevronDown, CheckCircle } from "lucide-react";
 
 export function WhyUsAndFaq() {
   const { locale } = useI18n();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const advantages = [
     {
@@ -49,24 +69,39 @@ export function WhyUsAndFaq() {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-6 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs">
+    <section
+      ref={sectionRef}
+      className="py-16 sm:py-24 bg-white font-arabic overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
+        <div
+          className={`lg:col-span-6 space-y-5 sm:space-y-6 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-extrabold text-xs">
             {locale === "ar" ? "لماذا شركة الدائرة؟" : "Why Choose AL_DAIRAH?"}
           </span>
-          <h2 className="text-3xl font-bold text-primary">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary leading-tight">
             {locale === "ar" ? "ما الذي يميز التعامل معنا" : "What Sets Us Apart"}
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {advantages.map((adv, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3.5 p-4 rounded-2xl bg-surface border border-primary/5"
+                style={{ transitionDelay: `${140 + idx * 80}ms` }}
+                className={`flex items-start gap-3.5 p-4 sm:p-4.5 rounded-2xl bg-surface border border-primary/10 hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-300 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
               >
-                <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <p className="text-sm font-medium text-primary/85 leading-relaxed">
+                <CheckCircle
+                  className="w-5 h-5 text-accent shrink-0 mt-0.5"
+                  strokeWidth={2.2}
+                />
+                <p className="text-xs sm:text-sm font-bold text-primary/85 leading-relaxed">
                   {locale === "ar" ? adv.ar : adv.en}
                 </p>
               </div>
@@ -74,39 +109,56 @@ export function WhyUsAndFaq() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs">
+        <div
+          className={`lg:col-span-6 space-y-5 sm:space-y-6 transition-all duration-700 delay-150 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-extrabold text-xs">
             {locale === "ar" ? "الأسئلة الشائعة" : "FAQ"}
           </span>
-          <h2 className="text-3xl font-bold text-primary">
-            {locale === "ar" ? "إجابات سريعة لاستفساراتك" : "Quick Answers to Your Questions"}
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary leading-tight">
+            {locale === "ar"
+              ? "إجابات سريعة لاستفساراتك"
+              : "Quick Answers to Your Questions"}
           </h2>
 
           <div className="space-y-3">
-            {faqs.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-primary/10 overflow-hidden bg-surface"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full px-5 py-4 text-start flex items-center justify-between font-bold text-sm text-primary"
+            {faqs.map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-surface ${
+                    isOpen
+                      ? "border-accent/50 shadow-sm"
+                      : "border-primary/10 hover:border-primary/25"
+                  }`}
                 >
-                  <span>{locale === "ar" ? item.qAr : item.qEn}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-accent transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-4 text-xs text-primary/75 leading-relaxed border-t border-primary/5 pt-3">
-                    {locale === "ar" ? item.aAr : item.aEn}
-                  </div>
-                )}
-              </div>
-            ))}
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    className="w-full px-4 sm:px-5 py-3.5 sm:py-4 text-start flex items-center justify-between gap-3 font-extrabold text-xs sm:text-sm text-primary"
+                  >
+                    <span className="leading-snug">
+                      {locale === "ar" ? item.qAr : item.qEn}
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-accent shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      strokeWidth={2.3}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-4 sm:px-5 pb-4 text-xs sm:text-[13px] font-medium text-primary/80 leading-relaxed border-t border-primary/10 pt-3">
+                      {locale === "ar" ? item.aAr : item.aEn}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function HowWeWork() {
   const progressDashOffset = 1000 - ((safeStep + 1) / NODES.length) * 1000;
 
   return (
-    <section className="py-16 sm:py-24 bg-primary text-white overflow-hidden">
+    <section className="py-16 sm:py-24 bg-primary text-white font-arabic overflow-hidden">
       <style jsx>{`
         @keyframes pointerPulse {
           0%,
@@ -41,11 +41,11 @@ export default function HowWeWork() {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-highlight font-bold text-xs">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-2.5 sm:space-y-3">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-highlight font-extrabold text-xs">
             {t.workflow.tag}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
             {t.workflow.title}
           </h2>
         </div>
@@ -62,7 +62,6 @@ export default function HowWeWork() {
                 : "Interactive supply chain route map"
             }
           >
-            {/* المسار الدائري المتموج الخلفي */}
             <path
               d={ROUTE_PATH}
               fill="none"
@@ -71,7 +70,6 @@ export default function HowWeWork() {
               strokeDasharray="12 10"
             />
 
-            {/* المسار النشط المتقدم */}
             <path
               d={ROUTE_PATH}
               fill="none"
@@ -82,7 +80,6 @@ export default function HowWeWork() {
               className="transition-all duration-700 ease-out"
             />
 
-            {/* مؤشر المركبة / الصهريج المتحرك على المسار */}
             <g
               transform={`translate(${pointerNode.x}, ${pointerNode.y - 44})`}
               className="transition-all duration-700 ease-out pointer-events-none"
@@ -98,8 +95,22 @@ export default function HowWeWork() {
                   stroke="#121731"
                   strokeWidth="2.5"
                 />
-                <circle cx="-13" cy="11" r="4.2" fill="#FFFFFF" stroke="#121731" strokeWidth="2" />
-                <circle cx="13" cy="11" r="4.2" fill="#FFFFFF" stroke="#121731" strokeWidth="2" />
+                <circle
+                  cx="-13"
+                  cy="11"
+                  r="4.2"
+                  fill="#FFFFFF"
+                  stroke="#121731"
+                  strokeWidth="2"
+                />
+                <circle
+                  cx="13"
+                  cy="11"
+                  r="4.2"
+                  fill="#FFFFFF"
+                  stroke="#121731"
+                  strokeWidth="2"
+                />
                 <text
                   x="0"
                   y="2"
@@ -113,7 +124,6 @@ export default function HowWeWork() {
               </g>
             </g>
 
-            {/* العقد الأربع على المسار */}
             {NODES.map((node, idx) => {
               const isCurrent = safeStep === idx;
               const isCompleted = safeStep >= idx;
@@ -148,7 +158,7 @@ export default function HowWeWork() {
                     y={node.y + 5}
                     textAnchor="middle"
                     fill="#FFFFFF"
-                    fontWeight="bold"
+                    fontWeight="800"
                     fontSize="14"
                   >
                     {idx + 1}
@@ -159,7 +169,7 @@ export default function HowWeWork() {
                     textAnchor="middle"
                     fill={isCurrent ? "#FFC400" : "#FFFFFF"}
                     fontSize="14"
-                    fontWeight={isCurrent ? "700" : "600"}
+                    fontWeight={isCurrent ? "800" : "700"}
                     className="transition-colors duration-300"
                   >
                     {locale === "ar" ? node.labelAr : node.labelEn}
@@ -185,13 +195,13 @@ export default function HowWeWork() {
                     : "bg-white/5 text-white border-white/10 hover:border-accent hover:-translate-y-0.5"
                 }`}
               >
-                <span className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-primary-dark text-highlight font-english font-bold text-xs sm:text-sm mb-3.5 sm:mb-4">
+                <span className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-primary-dark text-highlight font-extrabold text-xs sm:text-sm mb-3.5 sm:mb-4">
                   {step.num}
                 </span>
-                <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2">
+                <h3 className="text-base sm:text-lg font-extrabold mb-1.5 sm:mb-2">
                   {step.title}
                 </h3>
-                <p className="text-xs text-white/85 leading-relaxed">
+                <p className="text-xs font-medium text-white/90 leading-relaxed">
                   {step.desc}
                 </p>
               </button>

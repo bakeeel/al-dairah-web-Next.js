@@ -27,8 +27,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        arabic: ["var(--font-ibm-arabic)", "sans-serif"],
-        english: ["var(--font-poppins)", "sans-serif"],
+        sans: ['"Tajawal"', "Arial", "Helvetica", "sans-serif"],
+        arabic: ['"Tajawal"', "Arial", "Helvetica", "sans-serif"],
+        english: ['"Tajawal"', "Arial", "Helvetica", "sans-serif"],
       },
       boxShadow: {
         "glow-orange": "0 0 25px rgba(255, 122, 0, 0.45)",

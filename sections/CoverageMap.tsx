@@ -147,7 +147,6 @@ export default function CoverageMap() {
   const activeHub = selectedCity || citiesList[0];
   const makkahHub = citiesList.find((c) => c.id === "makkah") || citiesList[0];
 
-  // إحداثيات بطاقة "مقرنا الرئيسي" في مساحة خالية بعيدة عن أسماء المدن
   const hqCardX = 6;
   const hqCardY = 81;
   const hqCardW = 24.5;
@@ -156,7 +155,7 @@ export default function CoverageMap() {
   return (
     <section
       id="coverage"
-      className="py-24 bg-[#121731] text-white border-t border-white/10"
+      className="py-16 sm:py-24 bg-[#121731] text-white border-t border-white/10 font-arabic overflow-hidden"
     >
       <style jsx>{`
         @keyframes dashFlow {
@@ -170,9 +169,9 @@ export default function CoverageMap() {
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
         {/* خريطة المملكة التفاعلية SVG */}
-        <div className="lg:col-span-6 bg-[#171d3a] border border-white/10 rounded-3xl p-5 sm:p-6 relative shadow-2xl">
+        <div className="lg:col-span-6 bg-[#171d3a] border border-white/10 rounded-3xl p-4 sm:p-6 relative shadow-2xl">
           <svg viewBox="0 0 100 100" className="w-full h-auto overflow-visible">
             <defs>
               <radialGradient id="hqGlow" cx="50%" cy="50%" r="50%">
@@ -225,11 +224,12 @@ export default function CoverageMap() {
               const isTaif = city.id === "taif";
               const isYanbu = city.id === "yanbu";
 
-              const labelX = isJeddah || isYanbu
-                ? city.x - 2.2
-                : isTaif
-                ? city.x + 2.2
-                : city.x;
+              const labelX =
+                isJeddah || isYanbu
+                  ? city.x - 2.2
+                  : isTaif
+                  ? city.x + 2.2
+                  : city.x;
 
               const labelY = isMakkah
                 ? city.y + 4.4
@@ -237,17 +237,14 @@ export default function CoverageMap() {
                 ? city.y + 0.8
                 : city.y - 2.4;
 
-              const textAnchor = isJeddah || isYanbu
-                ? "end"
-                : isTaif
-                ? "start"
-                : "middle";
+              const textAnchor =
+                isJeddah || isYanbu ? "end" : isTaif ? "start" : "middle";
 
               return (
                 <g
                   key={city.id}
                   onClick={() => setSelectedCity(city)}
-                  className="cursor-pointer"
+                  className="cursor-pointer transition-transform"
                 >
                   {isSelected && (
                     <circle
@@ -346,45 +343,50 @@ export default function CoverageMap() {
             </g>
           </svg>
 
-          <div className="mt-4 flex items-center justify-between bg-[#11162e] px-5 py-3 rounded-full border border-white/10 text-xs">
-            <span className="flex items-center gap-2 text-[#FFC400] font-bold">
-              <MapPin className="w-4 h-4 text-[#FF7A00]" />
-              {locale === "ar"
-                ? `الوجهة المحددة: ${activeHub.nameAr}${
-                    activeHub.isHq ? " — مقرنا الرئيسي" : ""
-                  }`
-                : `Selected Hub: ${activeHub.nameEn}${
-                    activeHub.isHq ? " — Main HQ" : ""
-                  }`}
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 bg-[#11162e] px-4 sm:px-5 py-3 rounded-2xl sm:rounded-full border border-white/10 text-xs font-bold">
+            <span className="flex items-center gap-2 text-[#FFC400]">
+              <MapPin
+                className="w-4 h-4 text-[#FF7A00] shrink-0"
+                strokeWidth={2.2}
+              />
+              <span>
+                {locale === "ar"
+                  ? `الوجهة المحددة: ${activeHub.nameAr}${
+                      activeHub.isHq ? " — مقرنا الرئيسي" : ""
+                    }`
+                  : `Selected Hub: ${activeHub.nameEn}${
+                      activeHub.isHq ? " — Main HQ" : ""
+                    }`}
+              </span>
             </span>
-            <span className="text-white/70">
+            <span className="text-white/75">
               {locale === "ar" ? "تغطية 24/7" : "24/7 Coverage"}
             </span>
           </div>
         </div>
 
         {/* تفاصيل المناطق والمدن */}
-        <div className="lg:col-span-6 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FF7A00]/20 text-[#FFC400] font-bold text-xs border border-[#FF7A00]/30">
+        <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#FF7A00]/20 text-[#FFC400] font-extrabold text-xs border border-[#FF7A00]/30">
             {locale === "ar" ? "نطاق التغطية الجغرافية" : "Geographical Coverage"}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
             {locale === "ar"
               ? "مقرنا الرئيسي مكة المكرمة، ونخدم جميع مناطق المملكة"
               : "Main HQ in Makkah, Serving All Regions Across the Kingdom"}
           </h2>
-          <p className="text-white/75 text-base leading-relaxed">
+          <p className="text-white/80 text-sm sm:text-base font-medium leading-relaxed">
             {locale === "ar"
               ? "انطلاقاً من مقرنا الرئيسي في مكة المكرمة وعبر محاور التشغيل في جدة والطائف ومختلف مناطق المملكة، نغطي المدن والمناطق الصناعية والمشاريع بكفاءة عالية. اضغط على أي مدينة في الخريطة لتتبع خطوط الإمداد."
               : "Operating from our main headquarters in Makkah and across Jeddah, Taif, and regional hubs nationwide, we supply cities, industrial zones, and projects."}
           </p>
 
           {/* كبسولات المناطق الدائرية */}
-          <div className="flex flex-wrap gap-2.5 pt-2">
+          <div className="flex flex-wrap gap-2 sm:gap-2.5 pt-1 sm:pt-2">
             {regionsAr.map((reg, i) => (
               <span
                 key={i}
-                className="px-4 py-2 rounded-full bg-[#171d3a] border border-white/15 hover:border-[#FF7A00] text-xs font-medium transition"
+                className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#171d3a] border border-white/15 hover:border-[#FF7A00] hover:-translate-y-0.5 text-xs font-bold transition-all duration-300"
               >
                 {reg}
               </span>

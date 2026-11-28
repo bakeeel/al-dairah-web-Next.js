@@ -81,22 +81,20 @@ export default function SafetySection() {
     <section
       id="safety"
       ref={sectionRef}
-      className="py-16 sm:py-24 bg-white overflow-hidden"
+      className="py-16 sm:py-24 bg-white font-arabic overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div
-          className={`text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3 transition-all duration-700 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-6"
+          className={`text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-2.5 sm:space-y-3 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-extrabold text-xs">
             {locale === "ar"
               ? "السلامة والجودة والاعتمادات"
               : "Safety, Quality & Accreditations"}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-primary leading-tight">
             {locale === "ar"
               ? "نلتزم بأعلى معايير السلامة في كل قطرة وقود"
               : "Committed to the Highest Safety Standards in Every Drop"}
@@ -114,13 +112,13 @@ export default function SafetySection() {
             }`}
           >
             <div className="space-y-1">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-accent">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-accent">
+                <CheckCircle2 className="w-4 h-4 shrink-0" strokeWidth={2.2} />
                 <span>
                   {locale === "ar" ? "اعتماد رسمي" : "Official Accreditation"}
                 </span>
               </span>
-              <h3 className="text-base sm:text-lg font-bold text-primary leading-snug">
+              <h3 className="text-base sm:text-lg font-extrabold text-primary leading-snug">
                 {locale === "ar"
                   ? "مسجلين ناقل رسمي لدى أرامكو السعودية"
                   : "Official Registered Carrier at Saudi Aramco"}
@@ -129,7 +127,7 @@ export default function SafetySection() {
 
             <div
               style={{ clipPath: HEX_CLIP }}
-              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-primary text-highlight font-english font-bold flex items-center justify-center text-[10px] sm:text-xs text-center px-2 shadow-glow-navy"
+              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-primary text-highlight font-extrabold flex items-center justify-center text-[10px] sm:text-xs text-center px-2 shadow-glow-navy"
             >
               ARAMCO
             </div>
@@ -144,13 +142,13 @@ export default function SafetySection() {
             }`}
           >
             <div className="space-y-1">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-accent">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-accent">
+                <CheckCircle2 className="w-4 h-4 shrink-0" strokeWidth={2.2} />
                 <span>
                   {locale === "ar" ? "ترخيص حكومي" : "Government License"}
                 </span>
               </span>
-              <h3 className="text-base sm:text-lg font-bold text-primary leading-snug">
+              <h3 className="text-base sm:text-lg font-extrabold text-primary leading-snug">
                 {locale === "ar"
                   ? "مرخصين من الهيئة العامة للنقل (TGA)"
                   : "Licensed by Transport General Authority (TGA)"}
@@ -159,7 +157,7 @@ export default function SafetySection() {
 
             <div
               style={{ clipPath: HEX_CLIP }}
-              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-accent text-white font-english font-bold flex items-center justify-center text-xs sm:text-sm shadow-glow-orange"
+              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-accent text-white font-extrabold flex items-center justify-center text-xs sm:text-sm shadow-glow-orange"
             >
               TGA
             </div>
@@ -183,9 +181,12 @@ export default function SafetySection() {
                 <div className="relative shrink-0 sm:mx-auto sm:mb-4">
                   <div
                     style={{ clipPath: HEX_CLIP }}
-                    className="w-14 h-14 sm:w-16 sm:h-16 bg-primary group-hover:bg-accent text-highlight group-hover:text-white flex items-center justify-center transition-all duration-300 group-hover:scale-105"
+                    className="w-14 h-14 sm:w-16 sm:h-16 bg-primary group-hover:bg-accent text-highlight group-hover:text-white flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:rotate-3"
                   >
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <Icon
+                      className="w-5 h-5 sm:w-6 sm:h-6 shrink-0"
+                      strokeWidth={2.15}
+                    />
                   </div>
                   {b.live && (
                     <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3">
@@ -196,10 +197,10 @@ export default function SafetySection() {
                 </div>
 
                 <div className="min-w-0">
-                  <h4 className="font-bold text-primary text-sm mb-1.5 sm:mb-2 leading-snug">
+                  <h4 className="font-extrabold text-primary text-sm mb-1.5 sm:mb-2 leading-snug">
                     {locale === "ar" ? b.titleAr : b.titleEn}
                   </h4>
-                  <p className="text-xs text-primary/70 leading-relaxed">
+                  <p className="text-xs font-medium text-primary/75 leading-relaxed">
                     {locale === "ar" ? b.descAr : b.descEn}
                   </p>
                 </div>

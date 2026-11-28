@@ -5,8 +5,8 @@ export const siteConfig = {
     crNumber: "7026134838", // من بيانات السجل التجاري المرفقة
     aramcoRegistered: true,
     tgaLicensed: true,
-    phone: "+966 50 000 0000",
-    whatsapp: "966500000000",
+    phone: "+966 558500251",
+    whatsapp: "966558500251",
     email: "info@aldairah-fuel.sa",
     hqCityAr: "جدة - المملكة العربية السعودية",
     hqCityEn: "Jeddah, Kingdom of Saudi Arabia",

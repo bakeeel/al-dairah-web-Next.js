@@ -9,10 +9,27 @@
   --color-bg: #F7F7F9;
 }
 
+@layer base {
+  html,
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-tajawal), "Tajawal", Arial, Helvetica, sans-serif;
+  }
+}
+
 html {
   scroll-behavior: auto; /* يتم التحكم بالتمرير عبر Lenis */
   background-color: var(--color-bg);
   color: var(--color-primary);
+}
+
+.font-arabic,
+.font-english,
+.font-sans {
+  font-family: var(--font-tajawal), "Tajawal", Arial, Helvetica, sans-serif;
 }
 
 /* موتيف الدائرة المتكرر */
@@ -44,5 +61,39 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* شريط الأخبار */
+@keyframes tickerRtl {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+@keyframes tickerLtr {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-rtl {
+  animation: tickerRtl 34s linear infinite;
+}
+
+.animate-ticker-ltr {
+  animation: tickerLtr 34s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .animate-ticker-rtl,
+  .animate-ticker-ltr {
+    animation-duration: 24s;
   }
 }

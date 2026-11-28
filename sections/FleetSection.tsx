@@ -122,14 +122,17 @@ export default function FleetSection() {
   const rearWheel2 = 110 + tankWidth - 12;
 
   return (
-    <section id="fleet" className="py-24 bg-surface">
+    <section
+      id="fleet"
+      className="py-16 sm:py-24 bg-surface font-arabic overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs mb-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-5 sm:gap-6">
+          <div className="space-y-2.5 sm:space-y-3">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-extrabold text-xs">
               {locale === "ar" ? "أسطولنا الحديث" : "Our Modern Fleet"}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-primary leading-tight">
               {locale === "ar"
                 ? "صهاريج مصممة لأعلى معايير الأمان والسعة"
                 : "Tankers Engineered for Safety & Capacity"}
@@ -145,10 +148,10 @@ export default function FleetSection() {
                   type="button"
                   key={item.id}
                   onClick={() => setSelectedIdx(idx)}
-                  className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition ${
+                  className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-extrabold transition-all duration-300 active:scale-95 ${
                     isActive
                       ? "bg-primary text-highlight shadow-glow-navy"
-                      : "bg-white text-primary border border-primary/15 hover:border-accent"
+                      : "bg-white text-primary border border-primary/15 hover:border-accent hover:-translate-y-0.5"
                   }`}
                 >
                   {item.capacity} {locale === "ar" ? item.unitAr : item.unitEn}
@@ -159,9 +162,9 @@ export default function FleetSection() {
         </div>
 
         {/* بطاقة العرض التفاعلية 360 درجة */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-primary/10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="bg-white rounded-3xl p-5 sm:p-8 lg:p-10 border border-primary/10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           <div className="lg:col-span-7 flex flex-col items-center">
-            <div className="relative w-full h-64 sm:h-80 rounded-3xl bg-gradient-to-b from-primary to-primary-dark flex items-center justify-center overflow-hidden p-6">
+            <div className="relative w-full h-60 sm:h-80 rounded-3xl bg-gradient-to-b from-primary to-primary-dark flex items-center justify-center overflow-hidden p-4 sm:p-6">
               {/* منصة العرض التفاعلية */}
               <div
                 className="transition-transform duration-300"
@@ -169,7 +172,7 @@ export default function FleetSection() {
                   transform: `perspective(900px) rotateY(${angle}deg)`,
                 }}
               >
-                <svg viewBox="0 0 480 150" className="w-80 sm:w-[430px] h-auto">
+                <svg viewBox="0 0 480 150" className="w-72 sm:w-[430px] h-auto">
                   <rect
                     x="110"
                     y="20"
@@ -194,7 +197,7 @@ export default function FleetSection() {
                     y="45"
                     textAnchor="middle"
                     fill="#1B1F4B"
-                    fontWeight="bold"
+                    fontWeight="800"
                     fontSize="11.5"
                   >
                     {TANKER_BRAND_LABEL}
@@ -204,7 +207,7 @@ export default function FleetSection() {
                     y="62"
                     textAnchor="middle"
                     fill="#FF7A00"
-                    fontWeight="bold"
+                    fontWeight="800"
                     fontSize="9.5"
                   >
                     {tanker.capacity} {tanker.unitAr} • AL_DAIRAH
@@ -229,14 +232,14 @@ export default function FleetSection() {
               </div>
 
               {/* شريط تدوير 360° */}
-              <div className="absolute bottom-4 inset-x-4 sm:inset-x-6 flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+              <div className="absolute bottom-3.5 sm:bottom-4 inset-x-3.5 sm:inset-x-6 flex items-center gap-2.5 sm:gap-3 bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-2 rounded-full">
                 <button
                   type="button"
                   onClick={() => setAngle(0)}
                   aria-label="إعادة ضبط زاوية العرض"
-                  className="text-highlight hover:text-white transition shrink-0"
+                  className="text-highlight hover:text-white active:rotate-[-45deg] transition-transform shrink-0"
                 >
-                  <RotateCw className="w-4 h-4" />
+                  <RotateCw className="w-4 h-4 shrink-0" strokeWidth={2.2} />
                 </button>
                 <input
                   type="range"
@@ -247,56 +250,60 @@ export default function FleetSection() {
                   aria-label="تدوير الشاحنة 360 درجة"
                   className="w-full accent-accent cursor-pointer"
                 />
-                <span className="text-xs text-white font-english shrink-0">
+                <span className="text-xs text-white font-bold shrink-0">
                   {angle}°
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 space-y-5">
-            <div className="inline-block px-4 py-1 rounded-full bg-highlight/20 text-primary font-english font-bold text-sm">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-5">
+            <div className="inline-block px-4 py-1 rounded-full bg-highlight/20 text-primary font-extrabold text-xs sm:text-sm">
               {tanker.capacity} {locale === "ar" ? tanker.unitAr : tanker.unitEn}
             </div>
-            <h3 className="text-2xl font-bold text-primary">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-primary leading-snug">
               {locale === "ar" ? tanker.nameAr : tanker.nameEn}
             </h3>
 
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between py-2.5 border-b border-primary/10">
-                <span className="text-primary/60">
+            <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
+              <div className="flex justify-between items-center gap-4 py-2.5 border-b border-primary/10">
+                <span className="text-primary/65 font-medium">
                   {locale === "ar" ? "نظام المحاور" : "Axle Configuration"}
                 </span>
-                <span className="font-bold text-primary">
+                <span className="font-extrabold text-primary text-end">
                   {locale === "ar" ? tanker.axlesAr : tanker.axlesEn}
                 </span>
               </div>
-              <div className="flex justify-between py-2.5 border-b border-primary/10">
-                <span className="text-primary/60">
+              <div className="flex justify-between items-center gap-4 py-2.5 border-b border-primary/10">
+                <span className="text-primary/65 font-medium">
                   {locale === "ar"
                     ? "عدد الخزانات المعزولة"
                     : "Isolated Compartments"}
                 </span>
-                <span className="font-bold text-primary">
+                <span className="font-extrabold text-primary">
                   {tanker.compartments}
                 </span>
               </div>
-              <div className="flex justify-between py-2.5 border-b border-primary/10">
-                <span className="text-primary/60">
+              <div className="flex justify-between items-start gap-4 py-2.5 border-b border-primary/10">
+                <span className="text-primary/65 font-medium shrink-0">
                   {locale === "ar" ? "الاستخدام المثالي" : "Ideal Application"}
                 </span>
-                <span className="font-bold text-primary text-end max-w-[210px]">
+                <span className="font-extrabold text-primary text-end max-w-[220px] leading-relaxed">
                   {locale === "ar" ? tanker.idealForAr : tanker.idealForEn}
                 </span>
               </div>
             </div>
 
-            <a
-              href="#calculator"
-              className="circle-glow-btn inline-block bg-accent text-white font-bold px-7 py-3.5 text-sm"
-            >
-              {locale === "ar" ? "احجز هذا الصهريج الآن" : "Book This Tanker Now"}
-            </a>
+            <div className="pt-1">
+              <a
+                href="#calculator"
+                className="circle-glow-btn inline-flex items-center justify-center w-full sm:w-auto bg-accent hover:bg-accent-hover text-white font-extrabold px-7 py-3.5 text-sm transition"
+              >
+                {locale === "ar"
+                  ? "احجز هذا الصهريج الآن"
+                  : "Book This Tanker Now"}
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -68,19 +68,19 @@ export default function AboutSection() {
   const visionCards = [
     {
       icon: Compass,
-      iconWrapperClass: "bg-primary text-highlight",
+      iconWrapperClass: "bg-primary text-highlight shadow-sm",
       title: t.about.visionTitle,
       text: t.about.visionText,
     },
     {
       icon: Award,
-      iconWrapperClass: "bg-accent text-white",
+      iconWrapperClass: "bg-accent text-white shadow-sm",
       title: t.about.missionTitle,
       text: t.about.missionText,
     },
     {
       icon: Target,
-      iconWrapperClass: "bg-highlight text-primary",
+      iconWrapperClass: "bg-highlight text-primary shadow-sm",
       title: t.about.goalTitle,
       text: t.about.goalText,
     },
@@ -90,7 +90,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-16 sm:py-24 bg-surface overflow-hidden"
+      className="py-16 sm:py-24 bg-surface font-arabic overflow-hidden"
     >
       <style jsx>{`
         @keyframes orbitSpin {
@@ -128,7 +128,7 @@ export default function AboutSection() {
                 : "opacity-0 translate-y-8 scale-95"
             }`}
           >
-            <div className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-96 sm:h-96 flex items-center justify-center circle-float">
+            <div className="relative w-64 h-64 sm:w-96 sm:h-96 flex items-center justify-center circle-float">
               {/* الحلقة الخارجية الدوارة */}
               <div className="absolute inset-0 rounded-full border-[3px] sm:border-4 border-dashed border-accent/65 orbit-ring pointer-events-none">
                 <span className="absolute -top-3 right-10 sm:right-12 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-accent shadow-glow-orange" />
@@ -144,12 +144,12 @@ export default function AboutSection() {
                     className="h-9 sm:h-12 w-auto"
                   />
                 </div>
-                <p className="text-sm sm:text-lg font-bold text-highlight leading-snug px-2">
+                <p className="text-sm sm:text-lg font-extrabold text-highlight leading-snug px-2">
                   {locale === "ar"
                     ? "دائرة متكاملة من الأمان والموثوقية"
                     : "A Complete Circle of Safety & Trust"}
                 </p>
-                <span className="mt-2 sm:mt-3 text-[11px] sm:text-xs text-white/70 font-english">
+                <span className="mt-2 sm:mt-3 text-xs sm:text-[13px] font-bold text-white/80 tracking-wide">
                   CR: 7026134838 • KSA
                 </span>
               </div>
@@ -164,13 +164,13 @@ export default function AboutSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-extrabold text-xs sm:text-[13px]">
               {t.about.tag}
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-primary leading-tight">
               {t.about.title}
             </h2>
-            <p className="text-primary/75 text-sm sm:text-base lg:text-lg leading-relaxed">
+            <p className="text-primary/80 text-sm sm:text-base lg:text-[17px] font-medium leading-relaxed">
               {t.about.desc}
             </p>
 
@@ -182,21 +182,24 @@ export default function AboutSection() {
                   <div
                     key={idx}
                     style={{ transitionDelay: `${200 + idx * 110}ms` }}
-                    className={`bg-white p-4 sm:p-5 rounded-3xl border border-primary/10 shadow-sm hover:border-accent/50 hover:-translate-y-1 active:scale-[0.99] transition-all duration-500 ${
+                    className={`bg-white p-4 sm:p-5 rounded-3xl border border-primary/10 shadow-sm hover:border-accent/50 hover:-translate-y-1 active:scale-[0.99] transition-all duration-500 group ${
                       isVisible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-6"
                     }`}
                   >
                     <div
-                      className={`w-10 h-10 rounded-full ${card.iconWrapperClass} flex items-center justify-center mb-3`}
+                      className={`w-11 h-11 rounded-2xl ${card.iconWrapperClass} flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform duration-300`}
                     >
-                      <IconComponent className="w-5 h-5" />
+                      <IconComponent
+                        className="w-5 h-5 shrink-0"
+                        strokeWidth={2.2}
+                      />
                     </div>
-                    <h3 className="font-bold text-primary text-sm sm:text-base mb-1">
+                    <h3 className="font-extrabold text-primary text-sm sm:text-base mb-1.5">
                       {card.title}
                     </h3>
-                    <p className="text-xs text-primary/70 leading-relaxed">
+                    <p className="text-xs sm:text-[13px] font-medium text-primary/75 leading-relaxed">
                       {card.text}
                     </p>
                   </div>
@@ -232,13 +235,13 @@ export default function AboutSection() {
                 />
 
                 <div className="h-full bg-white p-5 sm:p-6 rounded-3xl border border-primary/10 hover:border-accent hover:-translate-y-1 shadow-sm transition-all duration-300 group">
-                  <span className="inline-block px-4 py-1 rounded-full bg-primary text-highlight font-english font-bold text-xs sm:text-sm mb-3 group-hover:bg-accent group-hover:text-white transition">
+                  <span className="inline-flex items-center px-4 py-1 rounded-full bg-primary text-highlight font-extrabold text-xs sm:text-sm mb-3 group-hover:bg-accent group-hover:text-white transition">
                     {m.year}
                   </span>
-                  <h4 className="font-bold text-primary text-sm sm:text-base mb-1.5">
+                  <h4 className="font-extrabold text-primary text-sm sm:text-base mb-1.5">
                     {locale === "ar" ? m.titleAr : m.titleEn}
                   </h4>
-                  <p className="text-xs text-primary/70 leading-relaxed">
+                  <p className="text-xs sm:text-[13px] font-medium text-primary/75 leading-relaxed">
                     {locale === "ar" ? m.descAr : m.descEn}
                   </p>
                 </div>
